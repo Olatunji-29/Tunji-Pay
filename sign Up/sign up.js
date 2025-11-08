@@ -62,7 +62,8 @@ const signUpButton = () => {
 
 
                             } else {
-
+                                let hisName = tunjiUsersObj.name.split(" ")[0];
+                                alert(`Congratulations Dear ${hisName} You have created an account successfully`)
                                 showMailExist.style.display = 'none'
                                 tunjiUsers.push(tunjiUsersObj)
                                 localStorage.setItem('tunji', JSON.stringify(tunjiUsers))
