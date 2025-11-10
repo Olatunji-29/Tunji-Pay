@@ -69,6 +69,7 @@ const signUpButton = () => {
                                     showMailExist.style.display = 'none'
                                     tunjiUsers.push(tunjiUsersObj)
                                     localStorage.setItem('tunji', JSON.stringify(tunjiUsers))
+                                    localStorage.setItem('userName', JSON.stringify(tunjiUsersObj.name))
                                     window.location.href = '../sign in/signin.html'
                                 } else {
                                     showInvalidName.style.display = 'block'
