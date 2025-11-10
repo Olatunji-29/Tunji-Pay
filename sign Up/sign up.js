@@ -62,12 +62,19 @@ const signUpButton = () => {
 
 
                             } else {
-                                let hisName = tunjiUsersObj.name.split(" ")[0];
-                                alert(`Congratulations Dear ${hisName} You have created an account successfully`)
-                                showMailExist.style.display = 'none'
-                                tunjiUsers.push(tunjiUsersObj)
-                                localStorage.setItem('tunji', JSON.stringify(tunjiUsers))
-                                window.location.href = '../sign in/signin.html'
+                                if ((tunjiUsersObj.name).length > 1) {
+                                    // let hisName = tunjiUsersObj.name.split(" ")[0];
+                                    let hisName = tunjiUsersObj.name.slice(0, tunjiUsersObj.name.indexOf(' '));
+                                    alert(`Congratulations Dear ${hisName} You have created an account successfully`)
+                                    showMailExist.style.display = 'none'
+                                    tunjiUsers.push(tunjiUsersObj)
+                                    localStorage.setItem('tunji', JSON.stringify(tunjiUsers))
+                                    window.location.href = '../sign in/signin.html'
+                                } else {
+                                    showInvalidName.style.display = 'block'
+                                    showNinValid.style.display = 'none'
+
+                                }
                             }
                         }
                     } else {
