@@ -8,97 +8,59 @@ if (localStorage.tunji) {
 
 
 const signUpButton = () => {
-    const fullName = document.getElementById('fullName')
-    const eMail = document.getElementById('eMail')
-    const nin = document.getElementById('nin')
+    const firstName = document.getElementById('firstName')
+    const lastName = document.getElementById('lastName')
     const userPassword = document.getElementById('userPassword')
     const userConfirmPassword = document.getElementById('userConfirmPassword')
     const showError = document.getElementById('showError')
-    const showMailError = document.getElementById('showMailError')
-    const showMailExist = document.getElementById('showMailExist')
 
 
 
 
-    if (fullName.value.trim() === "" || eMail.value.trim() === "" || nin.value.trim() === "" || userPassword.value.trim() === "" || userConfirmPassword.value.trim() === "") {
+
+    if (firstName.value.trim() === "" || lastName.value.trim() === "" || dob.value.trim() === "" || gender.value.trim() === "" || country.value.trim() === "" || userPassword.value.trim() === "" || userConfirmPassword.value.trim() === "") {
         showError.style.display = 'block'
-        showMailError.style.display = 'none'
-        showMailExist.style.display = 'none'
+
 
     } else {
         showError.style.display = 'none'
         const tunjiUsersObj = {
-            name: fullName.value,
-            mail: eMail.value,
-            n_number: nin.value,
+            f_name: firstName.value,
+            l_name: lastName.value,
+            ofBrith: dob.value,
+            gen: gender.value,
+            count: country.value,
             pin: userPassword.value,
             c_pin: userConfirmPassword.value
         }
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-        const validEmail = emailRegex.test(tunjiUsersObj.mail)
-        if (validEmail) {
-            const mailExist = tunjiUsers.find(exist => exist.mail === tunjiUsersObj.mail)
-            if (mailExist) {
-                showMailExist.style.display = 'block'
-                showMailError.style.display = 'none'
-                showError.style.display = 'none'
-            } else {
-                const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-                const validPassword = passwordRegex.test(tunjiUsersObj.pin)
-                if (validPassword) {
-                    if (tunjiUsersObj.pin === tunjiUsersObj.c_pin) {
-                        if ((tunjiUsersObj.n_number).length < 11 || (tunjiUsersObj.n_number).length > 11) {
-                            showNinValid.style.display = 'block'
-                            showNinExist.style.display = 'none'
 
-                        } else {
-                            const ninExist = tunjiUsers.find(ninEx => ninEx.n_number === tunjiUsersObj.n_number)
-                            if (ninExist) {
-                                showNinExist.style.display = 'block'
-                                showNinValid.style.display = 'none'
-                                showPasswordError.style.display = 'none'
-                                showPinConfirmation.style.display = 'none'
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+        const validPassword = passwordRegex.test(tunjiUsersObj.pin)
+        if (validPassword) {
+            if (tunjiUsersObj.pin === tunjiUsersObj.c_pin) {
+                const yearOfBirth = new Date(tunjiUsersObj.ofBrith).getFullYear();
+                const currentYear = new Date().getFullYear();
+                if(currentYear - yearOfBirth >=18){
+                    if((tunjiUsersObj.f_name).length > 1 && (tunjiUsersObj.l_name).length > 1  ){
+                        tunjiUsers.push(tunjiUsersObj)
+                       
 
-
-
-                            } else {
-                                if ((tunjiUsersObj.name).length > 1) {
-                                    // let hisName = tunjiUsersObj.name.split(" ")[0];
-                                    let hisName = tunjiUsersObj.name.slice(0, tunjiUsersObj.name.indexOf(' '));
-                                    alert(`Congratulations Dear ${hisName} You have created an account successfully`)
-                                    showMailExist.style.display = 'none'
-                                    tunjiUsers.push(tunjiUsersObj)
-                                    localStorage.setItem('tunji', JSON.stringify(tunjiUsers))
-                                    localStorage.setItem('userName', JSON.stringify(tunjiUsersObj.name))
-                                    window.location.href = '../sign in/signin.html'
-                                } else {
-                                    showInvalidName.style.display = 'block'
-                                    showNinValid.style.display = 'none'
-
-                                }
-                            }
-                        }
-                    } else {
-                        showPinConfirmation.style.display = 'block'
+                        window.location.href = '../step2/step2.html'
+                    }else{
+                        showNameError.style.display = 'block'
                     }
-                } else {
-                    showPasswordError.style.display = 'block'
+                }else{
+                    showBirthError.style.display = 'block'
                 }
+                
+            } else {
+                showPinConfirmation.style.display = 'block'
             }
-        } else {
-            showMailError.style.display = 'block'
-            showMailExist.style.display = 'none'
-            showError.style.display = 'none'
 
+        } else {
+            showPasswordError.style.display = 'block'
         }
 
-
-
-        fullName.value = ''
-        eMail.value = ''
-        nin.value = ''
-        userPassword.value = ''
-        userConfirmPassword.value = ''
 
     }
 }
