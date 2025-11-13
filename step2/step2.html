@@ -54,13 +54,22 @@
                         <p id="showPasswordError" class="alert alert-danger text-danger text-center p-2 rounded-2"
                             style="display: none;">The password is Invalid</p>
                         <p id="showPinConfirmation" class="alert alert-danger text-danger text-center p-2 rounded-2"
-                            style="display: none;">The Pin and its confirmation is not the same</p>
-                        <p id="showNinExist" class="alert alert-danger text-danger text-center p-2 rounded-2"
-                            style="display: none;">Nin has been Used Already</p>
-                        <p id="showNinValid" class="alert alert-danger text-danger text-center p-2 rounded-2"
-                            style="display: none;">Invalid Nin</p>
-                        <p id="showInvalidName" class="alert alert-danger text-danger text-center p-2 rounded-2"
-                            style="display: none;">Invalid Name</p>
+                            style="display: none;">The Pin and its confirmation are not the same</p>
+                        <p id="showNinBvn" class="alert alert-danger text-danger text-center p-2 rounded-2"
+                            style="display: none;">Nin / Bvn has been Used Already</p>
+                        <p id="showNinBvnValid" class="alert alert-danger text-danger text-center p-2 rounded-2"
+                            style="display: none;">Invalid Nin / Bvn</p>
+                        <p id="showInvalidPhone" class="alert alert-danger text-danger text-center p-2 rounded-2"
+                            style="display: none;">Invalid Phone number</p>
+                        <p id="showValidPin" class="alert alert-danger text-danger text-center p-2 rounded-2"
+                            style="display: none;">The Pin You entered is not Valid</p>
+                            
+                             <p id="showNinExist" class="alert alert-danger text-danger text-center p-2 rounded-2"
+                            style="display: none;">The bvn or nin has been taken already</p>
+
+                             <p id="showPhoneExist" class="alert alert-danger text-danger text-center p-2 rounded-2"
+                            style="display: none;">The phone number has been used already</p>
+
 
 
 
@@ -87,22 +96,35 @@
                                         <input type="text" id="bvn" class="form-control"
                                             placeholder="11-digit BVN (Optional)">
                                     </div>
-                                   
+
                                     <div class="mb-4">
                                         <label for="phone" class="form-label">Phone Number</label>
-                                        <input type="tel" id="phone" class="form-control"
-                                            placeholder="+234 800 000 0000">
+                                        <input type="number" id="phone" class="form-control"
+                                            placeholder="08110837609">
                                     </div>
 
-                                      <div class="mb-4">
-                                        <label for="pin" class="form-label">Set your pin</label>
-                                        <input type="text" id="pin" class="form-control"
-                                            placeholder="Set your Pin">
+
+                                    <div class="mb-3 position-relative">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" id="userPassword" class="form-control"
+                                            placeholder="Create password">
                                     </div>
-                                   
+                                    <div class="mb-3 position-relative">
+                                        <label class="form-label">Confirm Password</label>
+                                        <input type="password" id="userConfirmPassword" class="form-control"
+                                            placeholder="Confirm password">
+                                    </div>
+
+
+                                    <div class="mb-4">
+                                        <label for="pin" class="form-label">Set your transaction pin (Not Login
+                                            Password)</label>
+                                        <input type="text" id="pin" class="form-control" placeholder="Set your Pin">
+                                    </div>
+
                                 </form>
                             </div>
-                            <button type="button" onclick="signUpButton()" class="btn btn-success">Create
+                            <button id="signUp" type="button" onclick="signUpButton()" class="btn btn-success">Create
                                 account</button>
                         </div>
                     </form>

@@ -3,7 +3,7 @@ const personalName = document.getElementById('personalName')
 const firstLetter = document.getElementById('firstLetter')
 
 
-let hisName = JSON.parse(localStorage.getItem('userName')) ;
+let hisName = JSON.parse(localStorage.getItem('fullName')) ;
 realUserName.innerHTML = hisName;
 personalName.innerHTML = hisName
 
