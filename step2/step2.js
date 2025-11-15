@@ -1,4 +1,7 @@
-
+const done = localStorage.getItem('completeStep1')
+if(!done){
+    window.location.href = '../sign Up/signup.html'
+}
 const tunjiConfirm = JSON.parse(localStorage.getItem('myConfirm')) || []
 const firstSign = JSON.parse(localStorage.getItem('tunji')) || []
 
@@ -58,7 +61,7 @@ const signUpButton = () => {
                                             const cuName = JSON.parse(localStorage.getItem('fullName'))
                                             alert(`Dear ${cuName} You've created an account sucessfully`)
                                             tunjiConfirm.push(tunjiConfirmobj)
-                                            localStorage.setItem('confirm', JSON.stringify(tunjiConfirm))
+                                            localStorage.setItem('myConfirm', JSON.stringify(tunjiConfirm))
                                             const phoneDigits = document.getElementById('phone').value.trim();
                                             const accountNumber = phoneDigits.slice(-10);
                                             localStorage.setItem('yourAcc', JSON.stringify(accountNumber));

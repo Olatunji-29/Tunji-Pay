@@ -38,10 +38,18 @@ const signUpButton = () => {
         const currentYear = new Date().getFullYear();
         if (currentYear - yearOfBirth >= 18) {
             if ((tunjiUsersObj.f_name).length > 1 && (tunjiUsersObj.l_name).length > 1) {
+                alert('Level 1 Completed')
+                signUp.innerHTML = `
+                <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                <span class="visually-hidden" role="status">Loading...</span>
+                `
                 tunjiUsers.push(tunjiUsersObj)
                 localStorage.setItem('tunji', JSON.stringify(tunjiUsers))
                 localStorage.setItem('fullName', JSON.stringify(`${tunjiUsersObj.f_name} ${tunjiUsersObj.l_name}`));
-                window.location.href = '../step2/step2.html'
+                localStorage.setItem('completeStep1', 'true')
+                setTimeout(()=> {
+                    window.location.href = '../step2/step2.html'
+                }, 2000)
             } else {
                 showNameError.style.display = 'block'
             }

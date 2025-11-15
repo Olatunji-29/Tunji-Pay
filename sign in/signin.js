@@ -18,9 +18,15 @@ const signInButton = () => {
             const foundUser = storedUsers.find(user => user.mail === signInDetails.mail && user.pass === signInDetails.pass)
             if (foundUser) {
                 alert('Logged In Suceesfully')
-                // localStorage.setItem('cusMail', JSON.stringify(signInDetails.mail));
-                
-                window.location.href = '../dashboard/dashboard.html'
+                signIn.innerHTML = `
+                 <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                 <span class="visually-hidden" role="status">Loading...</span>
+                `
+                setTimeout(()=> {
+                    window.location.href = '../dashboard/dashboard.html'
+                }, 3000)
+
+
             } else {
                 showInvalidCredential.style.display = 'block'
             }
