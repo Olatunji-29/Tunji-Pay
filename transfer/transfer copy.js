@@ -1,66 +1,35 @@
 
 const findAccount = JSON.parse(localStorage.getItem('myConfirm'))
 const findName = JSON.parse(localStorage.getItem('tunji'))
-let myData = JSON.parse(localStorage.getItem('info')) || []
-
 
 
 const transfer = () => {
     const accountNumber = document.getElementById('accountNumber')
     if (bankSelect.value === "" || accountNumber.value.trim() === "" || amount.value.trim() === "") {
         showError.style.display = 'block'
-        showAccountError.style.display = 'none'
-        showAmountError.style.display = 'none'
-
-
     } else if (accountNumber.value.trim().length !== 10) {
         showAccountError.style.display = 'block'
-        showError.style.display = 'none'
-        showAmountError.style.display = 'none'
-
-
     } else if (amount.value.trim() < 50) {
         showAmountError.style.display = 'block'
-        showAccountError.style.display = 'none'
-        showError.style.display = 'none'
     } else {
         showError.style.display = 'none'
-        showAccountError.style.display = 'none'
-        showAmountError.style.display = 'none'
-
-
+        const transferObj = {
+            bankName: bankSelect.value,
+            accNum: accountNumber.value,
+            accName: accountName.value,
+            howMuch: amount.value
+        }
         const fullPhone = '0' + accountNumber.value
         const foundAccount = findAccount.find(user => user.pho === fullPhone)
-        if (foundAccount) {
+        if (foundAccount && accountNumber.value.trim().length == 10) {
             accountName.innerHTML = `
              <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
             <span class="visually-hidden" role="status">Loading...</span>
             `
-            setTimeout(() => {
+            setTimeout(()=> {
                 accountName.innerHTML = foundAccount.accName
-                trans.innerHTML = `Proceed if the Account name is correct`
             }, 2000)
-
-            trans.onclick = () => {
-                 const transferObj = {
-                bankName: bankSelect.value,
-                accNum: accountNumber.value,
-                accName: accountName.innerHTML,
-                howMuch: amount.value,
-                narrate: narration.value
-            }
-            // myData.push(transferObj)
-            localStorage.setItem('info', JSON.stringify(transferObj))
-
-                trans.innerHTML = `
-                 <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
-               <span class="visually-hidden" role="status">Loading...</span>
-                `
-                setTimeout(() => {
-                    window.location.href = '../confirmation transfer/confirmation.html'
-
-                }, 2000)
-            }
+            console.log(foundAccount.accName);
 
 
         } else {
@@ -68,7 +37,7 @@ const transfer = () => {
             <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
             <span class="visually-hidden" role="status">Loading...</span>
             `
-            setTimeout(() => {
+            setTimeout(()=> {
                 accountName.innerHTML = `${accountNumber.value} account is not registered with us`
             }, 2000)
 
@@ -78,3 +47,6 @@ const transfer = () => {
     }
 
 }
+
+
+

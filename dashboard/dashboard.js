@@ -1,3 +1,5 @@
+let newBal = JSON.parse(localStorage.getItem('new'))
+
 const realUserName = document.getElementById('realUserName')
 const personalName = document.getElementById('personalName')
 const firstLetter = document.getElementById('firstLetter')
@@ -12,7 +14,7 @@ firstLetter.innerHTML = myFirst
 
 
 
-let hisBalance = localStorage.getItem('bal')
+let hisBalance = localStorage.getItem('bal') 
 if(!hisBalance){
     let max = 5000000
     let min = 100000
@@ -22,5 +24,5 @@ if(!hisBalance){
     balance = hisBalance
 }
 
-availableBalance.innerHTML = `₦ ${balance}`
-totalBalance.innerHTML = `₦ ${balance}`
+availableBalance.innerHTML = `₦ ${newBal ??  balance}`.toFixed(2)
+totalBalance.innerHTML = `₦ ${newBal ??  balance}`.toFixed(2)

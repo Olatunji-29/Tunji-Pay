@@ -112,8 +112,9 @@
                                 <label for="accountNumber" id="accNumber" class="form-label small text-muted mb-1">Account Number</label>
                                 <input type="text" class="form-control" id="accountNumber" placeholder="Enter 10-digit account number" maxlength="10" inputmode="numeric" required>
                             </div>
+                            
                             <div class="mb-4">
-                                <p class="text-warning small mb-0" id="accountName">Account Name: ...</p>
+                                <p style="border: 1px solid #27313a; background-color: #212c38;" class= "p-2 rounded-2 text-center text-warning small mb-0" id="accountName">Account Name: ...</p>
                             </div>
                             
                             <div class="mb-3">
@@ -125,7 +126,7 @@
                                 <input type="text"  class="form-control" id="narration" placeholder="Reason for transfer">
                             </div>
 
-                            <button type="button" onclick="transfer()" class="btn btn-primary w-100">Proceed to Transfer</button>
+                            <button type="button" id="trans" onclick="transfer()" class="btn btn-primary w-100">Proceed to Transfer</button>
                         </form>
                     </div>
 

@@ -12,6 +12,7 @@ const signUpButton = () => {
         showError.style.display = 'block'
     } else {
         showError.style.display = 'none'
+        const userAccName = JSON.parse(localStorage.getItem('fullName'))
         const tunjiConfirmobj = {
             mail: eMail.value.trim(),
             ni: nin.value.trim(),
@@ -19,7 +20,8 @@ const signUpButton = () => {
             pho: phone.value.trim(),
             pinn: pin.value.trim(),
             pass: userPassword.value.trim(),
-            c_pass: userConfirmPassword.value.trim()
+            c_pass: userConfirmPassword.value.trim(),
+            accName: userAccName
         }
 
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
