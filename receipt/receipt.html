@@ -107,8 +107,8 @@
                             <span class="success-icon">✓</span>
                         </div>
                         <h3 class="fw-bold text-success mb-2">Transfer Successful!</h3>
-                        <h1 class="fw-bolder mb-3">₦5,050.00</h1>
-                        <p class="text-muted mb-0">Sent to **Ngozi Chukwu** at Access Bank.</p>
+                        <h1 class="fw-bolder mb-3 text-white" id="yourAmountt">₦5,050.00</h1>
+                        <p class="text-muted mb-0" >Sent to <b id="yourName">Ngozi Chukwu</b> at <b id="yourBank">Access</b> Bank.</p>
                     </div>
 
                     <div class="card acct-card p-4" style="animation-delay:100ms">
@@ -117,28 +117,28 @@
                         <ul class="list-group list-group-flush small">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="text-muted">Recipient Name</div>
-                                <div class="fw-bold">Ngozi Chukwu</div>
+                                <div class="fw-bold text-white" id="rName">Ngozi Chukwu</div>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="text-muted">Account Number</div>
-                                <div>0012345678</div>
+                                <div class="text-white" id="rAccount">0012345678</div>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="text-muted">Bank Sent To</div>
-                                <div>Access Bank Plc</div>
+                                <div id="rBank">Access Bank Plc</div>
                             </li>
                             
                             <li class="list-group-item d-flex justify-content-between align-items-center mt-3">
                                 <div class="text-muted">Amount Sent</div>
-                                <div>₦5,000.00</div>
+                                <div class="text-white" id="rAmount">₦5,000.00</div>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="text-muted">Service Fee</div>
-                                <div>₦50.00</div>
+                                <div class="text-white" id="rCharges">₦50.00</div>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center fw-bold">
                                 <div>Total Debited</div>
-                                <div class="text-white">₦5,050.00</div>
+                                <div class="text-white" id="rTotal">₦5,050.00</div>
                             </li>
                         </ul>
 
@@ -161,5 +161,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<script src="receipt.js"></script>
 
 </html>
