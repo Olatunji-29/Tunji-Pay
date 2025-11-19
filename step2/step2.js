@@ -3,7 +3,7 @@ if(!done){
     window.location.href = '../sign Up/signup.html'
 }
 const tunjiConfirm = JSON.parse(localStorage.getItem('myConfirm')) || []
-const firstSign = JSON.parse(localStorage.getItem('tunji')) || []
+// const firstSign = JSON.parse(localStorage.getItem('tunji')) || []
 
 
 const signUpButton = () => {
@@ -12,7 +12,7 @@ const signUpButton = () => {
         showError.style.display = 'block'
     } else {
         showError.style.display = 'none'
-        const userAccName = JSON.parse(localStorage.getItem('fullName'))
+        const userAccName = JSON.parse(localStorage.getItem('currentLoggedInUser'))
         const tunjiConfirmobj = {
             mail: eMail.value.trim(),
             ni: nin.value.trim(),
@@ -21,7 +21,8 @@ const signUpButton = () => {
             pinn: pin.value.trim(),
             pass: userPassword.value.trim(),
             c_pass: userConfirmPassword.value.trim(),
-            accName: userAccName
+            accName: userAccName,
+            balance: 5000
         }
 
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -60,15 +61,11 @@ const signUpButton = () => {
                                             <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
                                             <span class="visually-hidden" role="status">Loading...</span>
                                            `
-                                            const cuName = JSON.parse(localStorage.getItem('fullName'))
+                                            const cuName = JSON.parse(localStorage.getItem('currentLoggedInUser'))
                                             alert(`Dear ${cuName} You've created an account sucessfully`)
                                             tunjiConfirm.push(tunjiConfirmobj)
                                             localStorage.setItem('myConfirm', JSON.stringify(tunjiConfirm))
-                                            const phoneDigits = document.getElementById('phone').value.trim();
-                                            const accountNumber = phoneDigits.slice(-10);
-                                            localStorage.setItem('yourAcc', JSON.stringify(accountNumber));
-                                            localStorage.setItem('cusMail', JSON.stringify(tunjiConfirmobj.mail));
-                                            localStorage.setItem('yourBv', JSON.stringify(tunjiConfirmobj.bi));
+                                            console.log(JSON.parse(localStorage.getItem('myConfirm')));
 
 
                                             setTimeout(() => { window.location.href = '../sign in/signin.html' }, 2000)

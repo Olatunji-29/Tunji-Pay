@@ -3,22 +3,27 @@ const customersMail = document.getElementById('show')
 const showAcc = document.getElementById('showAcc')
 
 
-let hisName = JSON.parse(localStorage.getItem('fullName')) ;
-let hisGmail = JSON.parse(localStorage.getItem('cusMail'));
-let hisFirstLetter = hisName.slice(0, 1)
-let hisSecondLetter = hisName[hisName.indexOf(" ") + 1]
-let hisFirstTwoLetter = hisFirstLetter + hisSecondLetter
-firstTwoLetter.innerHTML = hisFirstTwoLetter
-customersName.innerHTML = hisName;
-customersMail.innerHTML = hisGmail
+const loggedInName = JSON.parse(localStorage.getItem('currentLoggedInUser')) || "Guest";
+const storedUsers = JSON.parse(localStorage.getItem('myConfirm')) || [];
 
-let hisAcc = JSON.parse(localStorage.getItem('yourAcc'))
-showAcc.innerHTML = hisAcc
+const currentUser = storedUsers.find(user => user.accName === loggedInName)
 
-let hisBvn = JSON.parse(localStorage.getItem('yourBv')) ;
-console.log(hisBvn);
 
-showBvn.innerHTML = hisBvn
+let firstLetter = loggedInName.slice(0, 1)
+let hisSecondLetter = loggedInName[loggedInName.indexOf(" ") + 1]
+let firstSecond = firstLetter + hisSecondLetter
+console.log(firstSecond);
+
+
+
+
+customersName.innerHTML = loggedInName;
+customersMail.innerHTML = currentUser? currentUser.mail:"No Email"
+firstTwoLetter.innerHTML = firstSecond
+let accountNumber = currentUser.pho.slice(-10)
+showAcc.innerHTML = accountNumber
+showBvn.innerHTML = currentUser? currentUser.bi : 'No bvn'
+
 
 
 

@@ -1,7 +1,7 @@
 
-let userName = JSON.parse(localStorage.getItem('fullName'))
+/*let userName = JSON.parse(localStorage.getItem('currentLoggedInUser'))
 let balanceKey = `bal_${userName}`
-let newBal = JSON.parse(localStorage.getItem('new'))
+// let newBal = JSON.parse(localStorage.getItem('new'))
 
 
 const realUserName = document.getElementById('realUserName')
@@ -33,10 +33,31 @@ firstLetter.innerHTML = myFirst
      balance = Number(hisBalance).toFixed(2)
  }
 
-   /*availableBalance.innerHTML = `₦ ${(Number(newBal ?? balance)).toFixed(2)}`
-   totalBalance.innerHTML =  `₦ ${(Number(newBal ?? balance)).toFixed(2)}`*/
+   availableBalance.innerHTML = `₦ ${(Number(newBal ?? balance)).toFixed(2)}`
+   totalBalance.innerHTML =  `₦ ${(Number(newBal ?? balance)).toFixed(2)}`
 
-    availableBalance.innerHTML = balance
-    totalBalance.innerHTML =  balance
+   availableBalance.innerHTML = `₦ ${balance}`
+    totalBalance.innerHTML =  `₦ ${balance}` */
 
 
+
+
+
+
+const loggedInName = JSON.parse(localStorage.getItem('currentLoggedInUser')) || "Guest";
+
+const storedUsers = JSON.parse(localStorage.getItem('myConfirm')) || [];
+const currentUser = storedUsers.find(user => user.accName === loggedInName);
+
+const userBalance = currentUser ? currentUser.balance : 0;
+
+
+realUserName.textContent = loggedInName;
+personalName.textContent = loggedInName;
+let myFirst = loggedInName.slice(0, 1).toUpperCase()
+firstLetter.innerHTML = myFirst
+availableBalance.innerHTML = `₦${userBalance} `
+totalBalance.innerHTML = `₦ ${userBalance}`
+
+
+console.log("Current logged in user:", loggedInName);

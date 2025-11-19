@@ -44,8 +44,8 @@ const signUpButton = () => {
                 <span class="visually-hidden" role="status">Loading...</span>
                 `
                 tunjiUsers.push(tunjiUsersObj)
-                localStorage.setItem('tunji', JSON.stringify(tunjiUsers))
-                localStorage.setItem('fullName', JSON.stringify(`${tunjiUsersObj.f_name} ${tunjiUsersObj.l_name}`));
+                // localStorage.setItem('tunji', JSON.stringify(tunjiUsers))
+                localStorage.setItem('currentLoggedInUser', JSON.stringify(`${tunjiUsersObj.f_name} ${tunjiUsersObj.l_name}`));
                 localStorage.setItem('completeStep1', 'true')
                 setTimeout(()=> {
                     window.location.href = '../step2/step2.html'

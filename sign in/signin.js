@@ -1,3 +1,5 @@
+
+
 const signInButton = () => {
     const eMail = document.getElementById('eMail').value.trim()
     const password = document.getElementById('password').value.trim()
@@ -17,12 +19,13 @@ const signInButton = () => {
         if (found) {
             const foundUser = storedUsers.find(user => user.mail === signInDetails.mail && user.pass === signInDetails.pass)
             if (foundUser) {
+                localStorage.setItem('currentLoggedInUser', JSON.stringify(foundUser.accName));
                 alert('Logged In Suceesfully')
                 signIn.innerHTML = `
                  <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
                  <span class="visually-hidden" role="status">Loading...</span>
                 `
-                setTimeout(()=> {
+                setTimeout(() => {
                     window.location.href = '../dashboard/dashboard.html'
                 }, 3000)
 
